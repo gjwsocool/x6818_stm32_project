@@ -8,8 +8,11 @@
 #define STM32_TO_X6818_TEMP_REQ  3
 #define X6818_TO_STM32_TEMP_RSP  4
 
-#define X6818_TO_STM32_EMOTOR_REQ  5
-#define STM32_TO_X6818_EMOTOR_RSP  6
+#define X6818_TO_STM32_BEEP_REQ   5
+#define STM32_TO_X6818_BEEP_RSP   6
+
+#define X6818_TO_STM32_EMOTOR_REQ   7
+#define STM32_TO_X6818_EMOTOR_RSP   8
 
 //电机操作命令:四个方向,两个速度,停止
 #define EMOTOR_FRONT            1    
@@ -37,6 +40,17 @@ typedef struct{
 	msghead_t msgh;
 	unsigned int success;
 }led_rsp_t;
+
+//网关x6818给stm32发送蜂鸣器命令
+typedef struct{
+	msghead_t msgh;
+	unsigned int cmd;//灯的命令
+}beep_req_t;
+//stm32给网关x6818的发送蜂鸣器反馈
+typedef struct{
+	msghead_t msgh;
+	unsigned int success;
+}beep_rsp_t;
 
 //stm32给网关x6818声明温度上报信息
 typedef struct{

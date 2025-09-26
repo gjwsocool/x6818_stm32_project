@@ -77,6 +77,19 @@ static int stm32_led_ctrl(int index,const char* cmd,char* buf){
 	}
     return write(client_sockfd,&ledReq,sizeof(ledReq));
 }
+
+static int stm32_beep_ctrl(int index,const char* cmd,char* buf){
+	(void)index;
+	beep_req_t beepReq;
+	beepReq.msgh.msgid=X6818_TO_STM32_BEEP_REQ;
+	beepReq.cmd=get_json_cmd(cmd);
+	if(beepReq.cmd==1){
+		strcpy(buf,"\"stm32_beep_on\"");
+	}else if(beepReq.cmd==0){
+		strcpy(buf, "\"stm32_beep_off\"");
+	}
+	return write(client_sockfd,&beepReq,sizeof(beepReq));
+}
 //针对一个小车的stm32控制
 //针对cmd数字转换成上报参数字符串
 static char* moveCmd[]={
@@ -141,7 +154,12 @@ static struct hard_resource hard_info[]={
             .cmd_name="stm32_second_green_led_ctrl",
             .ptr=stm32_led_ctrl,
             .arg1=2,
-    },//小车控制
+    },
+	{
+			.cmd_name="stm32_beep_ctrl",
+		    .ptr=stm32_beep_ctrl,
+			.arg1=0
+	},//小车控制
     {
             .cmd_name="emotor_car_control",
             .ptr=stm32_car_ctrl,
