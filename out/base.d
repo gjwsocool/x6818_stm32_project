@@ -1,0 +1,93 @@
+out/base.o: src/service/base.c include/service/base.h \
+ include/base/mqtt_base.h include/base/MQTTAsync.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/stdio.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/features.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/stdc-predef.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/predefs.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/sys/cdefs.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/wordsize.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/gnu/stubs.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/gnu/stubs-soft.h \
+ /opt/toolchains/bin/../lib/gcc/arm-cortex_a9-linux-gnueabi/4.7.4/include/stddef.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/types.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/typesizes.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/libio.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/_G_config.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/wchar.h \
+ /opt/toolchains/bin/../lib/gcc/arm-cortex_a9-linux-gnueabi/4.7.4/include/stdarg.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/stdio_lim.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/sys_errlist.h \
+ include/base/MQTTExportDeclarations.h include/base/MQTTProperties.h \
+ /opt/toolchains/bin/../lib/gcc/arm-cortex_a9-linux-gnueabi/4.7.4/include/stdint.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/stdint.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/wchar.h \
+ include/base/MQTTReasonCodes.h include/base/MQTTSubscribeOpts.h \
+ include/base/MQTTClientPersistence.h include/agentlite/iota_init.h \
+ include/agentlite/hw_type.h include/util/json_util.h \
+ include/third_party/cjson/cJSON.h include/agentlite/iota_error_type.h
+
+include/service/base.h:
+
+include/base/mqtt_base.h:
+
+include/base/MQTTAsync.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/stdio.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/features.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/stdc-predef.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/predefs.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/sys/cdefs.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/wordsize.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/gnu/stubs.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/gnu/stubs-soft.h:
+
+/opt/toolchains/bin/../lib/gcc/arm-cortex_a9-linux-gnueabi/4.7.4/include/stddef.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/types.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/typesizes.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/libio.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/_G_config.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/wchar.h:
+
+/opt/toolchains/bin/../lib/gcc/arm-cortex_a9-linux-gnueabi/4.7.4/include/stdarg.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/stdio_lim.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/sys_errlist.h:
+
+include/base/MQTTExportDeclarations.h:
+
+include/base/MQTTProperties.h:
+
+/opt/toolchains/bin/../lib/gcc/arm-cortex_a9-linux-gnueabi/4.7.4/include/stdint.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/stdint.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/wchar.h:
+
+include/base/MQTTReasonCodes.h:
+
+include/base/MQTTSubscribeOpts.h:
+
+include/base/MQTTClientPersistence.h:
+
+include/agentlite/iota_init.h:
+
+include/agentlite/hw_type.h:
+
+include/util/json_util.h:
+
+include/third_party/cjson/cJSON.h:
+
+include/agentlite/iota_error_type.h:
