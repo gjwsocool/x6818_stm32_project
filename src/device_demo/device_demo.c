@@ -66,7 +66,7 @@ static int led_gateway(int index, const char* cmd,char* buf) {
     return led_config(index,val);
 }
 static int stm32_led_ctrl(int index,const char* cmd,char* buf){
-	led_req_t ledReq;
+	led_req_t ledReq={0};
     ledReq.msgh.msgid=X6818_TO_STM32_LED_REQ;
     ledReq.index=index;
     ledReq.cmd=get_json_cmd(cmd);
@@ -80,7 +80,7 @@ static int stm32_led_ctrl(int index,const char* cmd,char* buf){
 
 static int stm32_beep_ctrl(int index,const char* cmd,char* buf){
 	(void)index;
-	beep_req_t beepReq;
+	beep_req_t beepReq={0};
 	beepReq.msgh.msgid=X6818_TO_STM32_BEEP_REQ;
 	beepReq.cmd=get_json_cmd(cmd);
 	if(beepReq.cmd==1){
@@ -104,11 +104,13 @@ static char* moveCmd[]={
 static int stm32_car_ctrl(int index,const char* cmd,char* buf){
     (void) index;//只有一个车,无编号
     emotor_req_t emotorReq;
+    memset(&emotorReq,0,sizeof(emotorReq));
 	//命令消息req的头信息
 	emotorReq.msgh.msgid=X6818_TO_STM32_EMOTOR_REQ;
-	emotorReq.msgh.msglen=sizeof(emotorReq);
 	emotorReq.cmd=get_json_cmd(cmd);
+	printf("The emotorReq of cmd is %d\n",emotorReq.cmd);
 	snprintf(buf, 200,"\"%s\"", moveCmd[emotorReq.cmd-1]);
+	//printf("----buf=%s----\n",buf);
 	return write(client_sockfd,&emotorReq,sizeof(emotorReq));
 }
 //函数指针
@@ -452,7 +454,7 @@ int main(int argc, char **argv)
     char value[200] = {0};
     while (count < 10000) {
         x6818_temp = ds18b20_read();  
-        sprintf(value, "%.2f", x6818_temp);
+       // sprintf(value, "%.2f", x6818_temp);
         report_device_data("x6818_temp", value);
         TimeSleep(5000);
         count++;
