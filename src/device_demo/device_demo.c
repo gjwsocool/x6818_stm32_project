@@ -16,6 +16,7 @@
 #include "led.h"
 #include "beep.h"
 #include "ds18b20.h"
+#include "servo.h"
 #include "msg.h"
 
 /*************TCP和STM32通信相关******************/
@@ -27,6 +28,8 @@
 //两个句柄
 static int server_sockfd;
 static int client_sockfd;
+//舵机起始位置
+static int position = 500;
 /************************************************/
 static char *g_workPath = ".";
 
@@ -113,6 +116,30 @@ static int stm32_car_ctrl(int index,const char* cmd,char* buf){
 	//printf("----buf=%s----\n",buf);
 	return write(client_sockfd,&emotorReq,sizeof(emotorReq));
 }
+//舵机控制
+//这里只有一个舵机,index不传,buf用来给华为云上报获取的角度值
+static int x6818_servo_ctrl(int index,const char* cmd,char* buf){
+	(void) index;
+	int servo_cmd=get_json_cmd(cmd);//也就是值1或者2
+	switch (servo_cmd) {
+		case SERVO_FRONT:
+			position += 200;
+			if(position >= 1000) position = 1000;
+			servo_move(1 ,position, 500);
+			sprintf(buf, "%d", servo_get_position(1));
+			printf("-----the Servo is front-----------\n");
+			break;
+		case SERVO_BACK:
+			if(position <= 0) position = 0;
+			position -= 200;
+			servo_move(1 ,position, 500);
+			sprintf(buf, "%d", servo_get_position(1));
+			printf("-----the servo is  back-----------\n");
+			break;
+	}
+	return 0;
+}
+
 //函数指针
 typedef int(*fun_ptr)(int,const char*,char*);
 //定义硬件类型信息
@@ -166,7 +193,12 @@ static struct hard_resource hard_info[]={
             .cmd_name="emotor_car_control",
             .ptr=stm32_car_ctrl,
             .arg1=0,
-    }
+    },
+	{
+			.cmd_name="x6818_servo_ctrl",
+			.ptr=x6818_servo_ctrl,
+			.arg1=0
+	}
 };
 #define SIZE ( sizeof(hard_info)/sizeof(hard_info[0]) )
 /*
@@ -281,10 +313,15 @@ static void HandleCommandRequest(EN_IOTA_COMMAND *command)
     for(i=0;i<SIZE;i++){
         if(!strcmp(command->command_name,hard_info[i].cmd_name)) {
                 hard_info[i].ptr(hard_info[i].arg1,payload,ctrl_info);
+				//如果命令名称和属性名称不匹配,多一步判断
                 if(!strcmp(hard_info[i].cmd_name,"emotor_car_control")){
                     report_device_data("emotor_state",ctrl_info);
                     break;
                 } 
+				if(!strcmp(hard_info[i].cmd_name, "x6818_servo_ctrl")){
+					report_device_data("x6818_servo",ctrl_info);
+					break;
+				}
                 //上报华为云，需要重点分析
                 report_device_data(command->command_name, ctrl_info);
                 break;
@@ -414,6 +451,9 @@ int main(int argc, char **argv)
         printf("open ds18b20 failsed.\n");
         return -1;
     }
+	/*舵机初始化*/
+	servo_init();
+	servo_move(1,position,1000);//id+位置+时间
     
     PrintfLog(EN_LOG_LEVEL_INFO, "device_demo: start test ===================>\n");
 

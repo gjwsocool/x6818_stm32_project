@@ -25,7 +25,7 @@ OBJS += $(DEVICE_RULE_OBJS)
 #$(warning "OS $(OS)")
 #$(warning "OSTYPE $(OSTYPE)")
 
-LIBS = $(LIB_PATH) -lpaho-mqtt3as -lssl -lcrypto -lz -lboundscheck -lpthread -lcurl -lm -lled -lbeep -lds18b20
+LIBS = $(LIB_PATH) -lpaho-mqtt3as -lssl -lcrypto -lz -lboundscheck -lpthread -lcurl -lm -lled -lbeep -lds18b20 -lservo
 #$(LIB_PATH) -lHWMQTT
 #$(LIB_PATH) -lpaho-mqtt3cs $(LIB_PATH)
 

@@ -78,7 +78,11 @@ out/device_demo.o: src/device_demo/device_demo.c \
  /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/fcntl.h \
  /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/fcntl.h \
  /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/fcntl-linux.h \
- src/device_demo/beep.h src/device_demo/ds18b20.h src/device_demo/msg.h \
+ src/device_demo/beep.h src/device_demo/ds18b20.h src/device_demo/servo.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/assert.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/termios.h \
+ /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/termios.h \
+ src/device_demo/msg.h \
  /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/sys/socket.h \
  /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/sys/uio.h \
  /opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/uio.h \
@@ -268,6 +272,14 @@ src/device_demo/led.h:
 src/device_demo/beep.h:
 
 src/device_demo/ds18b20.h:
+
+src/device_demo/servo.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/assert.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/termios.h:
+
+/opt/toolchains/bin/../arm-cortex_a9-linux-gnueabi/sysroot/usr/include/bits/termios.h:
 
 src/device_demo/msg.h:
 

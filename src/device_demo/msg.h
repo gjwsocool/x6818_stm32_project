@@ -23,6 +23,9 @@
 #define EMOTOR_SPEED_DOWN       6
 #define EMOTOR_STOP             7
 
+//针对一个舵机的两个方向
+#define SERVO_FRONT  1
+#define SERVO_BACK   2
 //消息头:|消息id|消息长度|
 typedef struct{
 	unsigned int msgid;
